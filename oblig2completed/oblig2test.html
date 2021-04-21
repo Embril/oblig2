@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>QUnit Example</title>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/qunit/qunit-2.9.2.css"
+    />
+  </head>
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
+    <script src="oblig2js.js"></script>
+    <script>
+      function show() {}
+      let inputValue = 1;
+
+      QUnit.module('bordertest', (hooks) => {
+        QUnit.test('border på stolpe', function (assert) {
+          barBorder(2);
+          assert.equal(stolpeNummer, 2);
+        });
+      });
+
+      QUnit.module('bordertest2', (hooks) => {
+        QUnit.test('border på stolpe 2', function (assert) {
+          barBorder(3);
+          barBorder(3);
+          assert.equal(stolpeNummer, 'ingen stolpe er valgt');
+        });
+      });
+
+      QUnit.test('add en stolpe', function (assert) {
+        numbers = [1];
+        inputValue = 2;
+        addStolpe();
+        assert.equal(numbers.length, 2);
+        assert.equal(numbers[1], 2);
+      }); //completed
+
+      QUnit.test('Fjern en stolpe', function (assert) {
+        numbers = [10, 5, 7, 5];
+        stolpeNummer = 4;
+        barDrap();
+        assert.deepEqual(numbers, [10, 5, 7]);
+      }); //completed
+
+      QUnit.test('endre en stolpe', function (assert) {
+        numbers = [4, 5, 2, 6];
+        inputValue = 9;
+        stolpeNummer = 3;
+        changeStolpe();
+        assert.equal(numbers.length, 4);
+        assert.equal(numbers[2], 9);
+      }); //completed
+    </script>
+  </body>
+</html>
